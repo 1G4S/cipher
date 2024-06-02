@@ -29,3 +29,11 @@ class TestRot47(unittest.TestCase):
     def test_decrypt_rot47_for_several_words_second_type(self):
         before_decrypt = "AC@;64E 6CC@CD"
         self.assertEqual(self.rot47.decrypt(text=before_decrypt), "project errors")
+
+    def test_validation_in_rot_47_for_wrong_value(self):
+        text_to_validate = "ąrbóz"
+        self.assertEqual(ROT47.validation(text=text_to_validate), True)
+
+    def test_validation_in_rot_47_for_right_value(self):
+        text_to_validate = "arbuz-012:"
+        self.assertEqual(ROT47.validation(text=text_to_validate), False)

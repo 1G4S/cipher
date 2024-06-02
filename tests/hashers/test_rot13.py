@@ -35,7 +35,7 @@ class TestRot13(unittest.TestCase):
         self.assertEqual(self.rot13.decrypt(text=before_decrypt), "project errors")
 
     def test_validation_in_rot_13_for_wrong_value(self):
-        text_to_validate = "1ar3buz2"
+        text_to_validate = "1ąr3buz2"
         self.assertEqual(ROT13.validation(text=text_to_validate), True)
 
     def test_validation_in_rot_13_for_right_value(self):
