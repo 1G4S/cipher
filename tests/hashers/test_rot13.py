@@ -7,29 +7,37 @@ class TestRot13(unittest.TestCase):
         self.rot13 = ROT13()
 
     def test_encrypt_rot13_for_single_word(self):
-        before_encrypt1 = "arbuz"
-        self.assertEqual(self.rot13.encrypt(text=before_encrypt1), "neohm")
+        before_encrypt = "arbuz"
+        self.assertEqual(self.rot13.encrypt(text=before_encrypt), "neohm")
 
     def test_encrypt_rot13_for_several_words_first_type(self):
-        before_encrypt2 = "ptaki lataja kluczem"
+        before_encrypt = "ptaki lataja kluczem"
         self.assertEqual(
-            self.rot13.encrypt(text=before_encrypt2), "cgnxv yngnwn xyhpmrz"
+            self.rot13.encrypt(text=before_encrypt), "cgnxv yngnwn xyhpmrz"
         )
 
     def test_encrypt_rot13_for_several_words_second_type(self):
-        before_encrypt3 = "project errors"
-        self.assertEqual(self.rot13.encrypt(text=before_encrypt3), "cebwrpg reebef")
+        before_encrypt = "project errors"
+        self.assertEqual(self.rot13.encrypt(text=before_encrypt), "cebwrpg reebef")
 
     def test_decrypt_rot13_for_single_word(self):
-        before_decrypt1 = "neohm"
-        self.assertEqual(self.rot13.decrypt(text=before_decrypt1), "arbuz")
+        before_decrypt = "neohm"
+        self.assertEqual(self.rot13.decrypt(text=before_decrypt), "arbuz")
 
     def test_decrypt_rot13_for_several_words_first_type(self):
-        before_decrypt2 = "cgnxv yngnwn xyhpmrz"
+        before_decrypt = "cgnxv yngnwn xyhpmrz"
         self.assertEqual(
-            self.rot13.decrypt(text=before_decrypt2), "ptaki lataja kluczem"
+            self.rot13.decrypt(text=before_decrypt), "ptaki lataja kluczem"
         )
 
     def test_decrypt_rot13_for_several_words_second_type(self):
-        before_decrypt3 = "cebwrpg reebef"
-        self.assertEqual(self.rot13.decrypt(text=before_decrypt3), "project errors")
+        before_decrypt = "cebwrpg reebef"
+        self.assertEqual(self.rot13.decrypt(text=before_decrypt), "project errors")
+
+    def test_validation_in_rot_13_for_wrong_value(self):
+        text_to_validate = "1ar3buz2"
+        self.assertEqual(ROT13.validation(text=text_to_validate), True)
+
+    def test_validation_in_rot_13_for_right_value(self):
+        text_to_validate = "arbuz"
+        self.assertEqual(ROT13.validation(text=text_to_validate), False)
