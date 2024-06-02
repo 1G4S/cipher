@@ -25,4 +25,5 @@ class ROT13(Cipher):
 
     @staticmethod
     def validation(text: str) -> bool:
-        return any(str(i) in text for i in range(10))
+        wrong_chars: str = "ĄąĆćĘęŁłŃńÓóŚśŹźŻż0123456789"
+        return any(i in text for i in wrong_chars)

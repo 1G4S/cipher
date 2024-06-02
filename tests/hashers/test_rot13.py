@@ -12,7 +12,9 @@ class TestRot13(unittest.TestCase):
 
     def test_encrypt_rot13_for_several_words_first_type(self):
         before_encrypt2 = "ptaki lataja kluczem"
-        self.assertEqual(self.rot13.encrypt(text=before_encrypt2), "cgnxv yngnwn xyhpmrz")
+        self.assertEqual(
+            self.rot13.encrypt(text=before_encrypt2), "cgnxv yngnwn xyhpmrz"
+        )
 
     def test_encrypt_rot13_for_several_words_second_type(self):
         before_encrypt3 = "project errors"
@@ -24,7 +26,9 @@ class TestRot13(unittest.TestCase):
 
     def test_decrypt_rot13_for_several_words_first_type(self):
         before_decrypt2 = "cgnxv yngnwn xyhpmrz"
-        self.assertEqual(self.rot13.decrypt(text=before_decrypt2), "ptaki lataja kluczem")
+        self.assertEqual(
+            self.rot13.decrypt(text=before_decrypt2), "ptaki lataja kluczem"
+        )
 
     def test_decrypt_rot13_for_several_words_second_type(self):
         before_decrypt3 = "cebwrpg reebef"
