@@ -2,7 +2,7 @@
 
 1. ROT13, ROT47 (SZYFR CEZARA) -> https://pl.wikipedia.org/wiki/Szyfr_Cezara
 2. Funkcjonalności
-    - FileHandler odczyt, zapis do pliku, user podaje nazwe, wyjatki, Gdy chce zapisać do tego samego pliku to append,
+    - FileHandler odczyt, zapis do pliku, user podaje nazwe, wyjatki, Gdy chce zapisać do tego samego pliku to append (Plik Json)
     - Szyfrowanie i Odszyfrowywanie.
     - Buffer / MemoryBuffer czyli taka lista, która sobie istnieje podczas działania programu, do niej będziemy dodawać usuwać itd. Z niej zapisywać do pliku i do niej wczytywać. 
     - Menu (Menu oparte o dict, czy match case python 3.10+)
