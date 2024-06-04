@@ -3,4 +3,7 @@ class Menu:
         self.options: dict = options
 
     def display(self):
-        pass
+        print(35 * '*')
+        for key, value in self.options.items():
+            print(f'{key}. {value}')
+        print(35 * '*')
