@@ -20,7 +20,7 @@ class TestMenu(unittest.TestCase):
     def setUp(self):
         self.menu = Menu(self._options)
 
-    def test_display(self):
+    def test_display_in_menu(self):
         expected_display = """***********************************
 1. Szyfrowanie ROT13
 2. Deszyfrowanie ROT13
@@ -37,3 +37,16 @@ class TestMenu(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as out:
             self.menu.display()
             self.assertEqual(out.getvalue(), expected_display)
+
+    @patch('builtins.input', side_effect=[2])
+    def test_make_choice_in_menu_first_value(self, mock_input):
+        self.assertEqual(self.menu.make_choice(), 2)
+
+    @patch('builtins.input', side_effect=[9])
+    def test_make_choice_in_menu_second_value(self, mock_input):
+        self.assertEqual(self.menu.make_choice(), 9)
+
+    @patch('builtins.input', side_effect=[-1])
+    def test_make_choice_in_menu_wrong_value(self, mock_input):
+        with self.assertRaises(ValueError):
+            self.menu.make_choice()

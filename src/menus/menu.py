@@ -7,3 +7,6 @@ class Menu:
         for key, value in self.options.items():
             print(f'{key}. {value}')
         print(35 * '*')
+
+    def make_choice(self):
+        pass
