@@ -28,3 +28,11 @@ class TestMemoryBuffer(unittest.TestCase):
         self.assertEqual(len(buffer.buffer), 1)
         self.assertNotIn(text1, buffer.buffer)
         self.assertIn(text2, buffer.buffer)
+
+    def test_validation_in_memory_buffer_for_right_value(self):
+        data_to_validate = Text("str", "rot13", "encrypted")
+        self.assertEqual(MemoryBuffer.validation(data=data_to_validate), False)
+
+    def test_validation_in_memory_buffer_for_wrong_value(self):
+        data_to_validate = Text("str", "rot13", "encrypteerrd")
+        self.assertEqual(MemoryBuffer.validation(data=data_to_validate), True)
