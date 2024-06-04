@@ -50,3 +50,9 @@ class TestMenu(unittest.TestCase):
     def test_make_choice_in_menu_wrong_value(self, mock_input):
         with self.assertRaises(ValueError):
             self.menu.make_choice()
+
+    def test_validation_in_menu_right_value(self):
+        self.assertEqual(self.menu.validation(4, self._options), False)
+
+    def test_validation_in_menu_wrong_value(self):
+        self.assertEqual(self.menu.validation(-4, self._options), True)

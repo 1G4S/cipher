@@ -18,3 +18,4 @@ class Menu:
     def validation(choice: int, options: dict) -> bool:
         if not 1 <= choice <= len(options):
             return True
+        return False
