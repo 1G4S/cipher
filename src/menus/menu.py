@@ -9,4 +9,12 @@ class Menu:
         print(35 * '*')
 
     def make_choice(self):
-        pass
+        choice = int(input("Podaj swój wybór: "))
+        if self.validation(choice, self.options):
+            raise ValueError
+        return choice
+
+    @staticmethod
+    def validation(choice: int, options: dict) -> bool:
+        if not 1 <= choice <= len(options):
+            return True
