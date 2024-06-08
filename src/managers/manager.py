@@ -40,7 +40,7 @@ class Manager:
         self.memory.add_text(data=new_text)
 
     def display_memory_buffer(self) -> None:
-        print(self.memory)
+        print(self.memory.buffer)
 
     def read_from_file(self) -> None:
         path: str = input("Podaj ścieżkę do pliku: ")
