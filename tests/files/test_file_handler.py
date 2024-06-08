@@ -1,7 +1,7 @@
 import unittest
 import os
 from src.files.file_handler import FileHandler
-from src.hashers.text import Text
+from src.helpers.text import Text
 
 
 class TestFileHandler(unittest.TestCase):

@@ -1,7 +1,7 @@
 import json
 import re
 
-from src.hashers.text import Text
+from src.helpers.text import Text
 from dataclasses import asdict
 
 

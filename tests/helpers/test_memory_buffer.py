@@ -1,5 +1,5 @@
 import unittest
-from src.hashers.text import Text
+from src.helpers.text import Text
 from src.helpers.memory_buffer import MemoryBuffer
 
 

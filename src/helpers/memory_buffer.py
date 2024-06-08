@@ -1,4 +1,4 @@
-from src.hashers.text import Text
+from src.helpers.text import Text
 
 
 class MemoryBuffer:
@@ -15,6 +15,7 @@ class MemoryBuffer:
         for text in self.buffer.copy():
             if name == text.text:
                 self.buffer.remove(text)
+        # return [text for text in self.buffer if name != text.text]
 
     @staticmethod
     def validation(data: Text) -> bool:
@@ -25,4 +26,4 @@ class MemoryBuffer:
         return False
 
     def __str__(self):
-        print(self.buffer)
+        return self.buffer
