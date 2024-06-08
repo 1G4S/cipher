@@ -44,3 +44,10 @@ class TestManager(unittest.TestCase):
         self.manager.memory.add_text(text)
         self.manager.display_memory_buffer()
         self.assertIn("Text(text='example', rot_type='rot47', status='decrypted')", mock_out.getvalue())
+
+    @patch('builtins.input', return_value="/Users/igorsarnowski/PycharmProjects/cipher/tests/test_read_manager.json")
+    def test_read_from_file_in_manager(self, mock_input):
+        text = Text("str", "rot13", "encrypted")
+        test_list = [text]
+        self.manager.read_from_file()
+        self.assertEqual(self.manager.memory.buffer, test_list)

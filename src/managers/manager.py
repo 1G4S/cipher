@@ -46,7 +46,6 @@ class Manager:
         path: str = input("Podaj ścieżkę do pliku: ")
         data_read = FileHandler.read_from_file(path=path)
         self.memory.add_list_of_texts(data=data_read)
-        self.display_memory_buffer()
 
     def save_to_file(self) -> None:
         filename: str = input("Podaj nazwę pliku: ")
