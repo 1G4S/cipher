@@ -7,14 +7,14 @@ class MemoryBuffer:
 
     def add_text(self, data: Text) -> None:
         if not self.is_data_valid(data=data):
-            raise ValueError
+            raise ValueError("Data are not correct.")
 
         self.buffer.append(data)
 
     def add_list_of_texts(self, data: list[Text]):
         for d in data:
             if not self.is_data_valid(data=d):
-                raise ValueError
+                raise ValueError("Data are not correct.")
             self.buffer.append(d)
 
     def remove_text(self, name: str) -> None:
