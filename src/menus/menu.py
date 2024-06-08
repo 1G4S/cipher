@@ -11,7 +11,7 @@ class Menu:
     def make_choice(self):
         choice = int(input("Podaj swój wybór: "))
         if not self.is_choice_valid(choice, self.options):
-            raise ValueError("Wybór poza zakresem")
+            raise ValueError("Choice is out of range.")
         return choice
 
     @staticmethod
