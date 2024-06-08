@@ -6,15 +6,15 @@ from src.menus.menu import Menu
 
 
 class TestMenu(unittest.TestCase):
-    _options = {1: "Szyfrowanie ROT13",
-                2: "Deszyfrowanie ROT13",
-                3: "Szyfrowanie ROT47",
-                4: "Deszyfrowanie ROT47",
-                5: "Wyświetlenie zapisanych danych",
-                6: "Odczyt z pliku",
-                7: "Zapis do pliku",
-                8: "Usuń dane",
-                9: "Wyjście"
+    _options = {1: ("Szyfrowanie ROT13", 0),
+                2: ("Deszyfrowanie ROT13", 0),
+                3: ("Szyfrowanie ROT47", 0),
+                4: ("Deszyfrowanie ROT47", 0),
+                5: ("Wyświetlenie zapisanych danych", 0),
+                6: ("Odczyt z pliku", 0),
+                7: ("Zapis do pliku", 0),
+                8: ("Usuń dane", 0),
+                9: ("Wyjście", 0)
                 }
 
     def setUp(self):
