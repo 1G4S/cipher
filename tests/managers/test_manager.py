@@ -15,3 +15,10 @@ class TestManager(unittest.TestCase):
         self.manager.encrypt_rot13()
         self.assertEqual(self.manager.memory.buffer[0], text)
         self.manager.clear_memory()
+
+    @patch("builtins.input", return_value="neohm")
+    def test_decrypt_rot13_in_manager(self, mock_input):
+        text = Text("arbuz", "rot13", "decrypted")
+        self.manager.decrypt_rot13()
+        self.assertEqual(self.manager.memory.buffer[0], text)
+        self.manager.clear_memory()
