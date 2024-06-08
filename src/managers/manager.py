@@ -1,3 +1,4 @@
+from src.files.file_handler import FileHandler
 from src.hashers.rot13 import ROT13
 from src.hashers.rot47 import ROT47
 from src.helpers.memory_buffer import MemoryBuffer
@@ -38,3 +39,8 @@ class Manager:
 
     def display_memory_buffer(self) -> None:
         print(self.memory)
+
+    def read_from_file(self) -> None:
+        filename: str = input("Podaj ścieżkę do pliku: ")
+        data_read = FileHandler.read_from_file(path=filename)
+        self.memory.add_text(data=data_read)
