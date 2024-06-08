@@ -1,3 +1,4 @@
+import os
 import unittest
 
 from src.helpers.text import Text
@@ -9,6 +10,10 @@ from io import StringIO
 class TestManager(unittest.TestCase):
     def setUp(self):
         self.manager = Manager()
+
+    def tearDown(self):
+        if os.path.exists("/Users/igorsarnowski/PycharmProjects/cipher/tests/managers/test.json"):
+            os.remove("/Users/igorsarnowski/PycharmProjects/cipher/tests/managers/test.json")
 
     @patch("builtins.input", return_value="arbuz")
     def test_encrypt_rot13_in_manager(self, mock_input):
@@ -44,6 +49,7 @@ class TestManager(unittest.TestCase):
         self.manager.memory.add_text(text)
         self.manager.display_memory_buffer()
         self.assertIn("Text(text='example', rot_type='rot47', status='decrypted')", mock_out.getvalue())
+        self.manager.clear_memory()
 
     @patch('builtins.input', return_value="/Users/igorsarnowski/PycharmProjects/cipher/tests/test_read_manager.json")
     def test_read_from_file_in_manager(self, mock_input):
@@ -51,3 +57,16 @@ class TestManager(unittest.TestCase):
         test_list = [text]
         self.manager.read_from_file()
         self.assertEqual(self.manager.memory.buffer, test_list)
+        self.manager.clear_memory()
+
+    @patch('builtins.input',
+           side_effect=["test.json", "/Users/igorsarnowski/PycharmProjects/cipher/tests/managers/test.json"])
+    def test_save_to_file_in_manager(self, mock_input):
+        text = Text("str", "rot13", "encrypted")
+        test_list = [text]
+        self.manager.memory.add_text(text)
+        self.manager.save_to_file()
+        self.manager.clear_memory()
+        self.manager.read_from_file()
+        self.assertEqual(self.manager.memory.buffer, test_list)
+        self.manager.clear_memory()
