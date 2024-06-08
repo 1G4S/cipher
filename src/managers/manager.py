@@ -46,4 +46,6 @@ class Manager:
         self.memory.add_list_of_texts(data=data_read)
         self.display_memory_buffer()
 
-    def save_to_file(self) -> None: ...
+    def save_to_file(self) -> None:
+        filename: str = input("Podaj nazwę pliku: ")
+        FileHandler.save_text_to_file(data=self.memory.buffer, filename=filename)
