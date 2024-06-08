@@ -25,22 +25,14 @@ class FileHandler:
             json.dump(formatted_dict, file, indent=4)
 
     @staticmethod
-    def read_from_file(path: str) -> Text:
+    def read_from_file(path: str) -> list[Text]:
         with open(path) as file:
             data: dict = json.load(file)
-
-        text: Text = Text(data["text"], data["rot_type"], data["status"])
-        if FileHandler.validation(data=text):
-            raise ValueError
-        return text
-
-    @staticmethod
-    def validation(data: Text) -> bool:
-        if (data.rot_type != "rot13" and data.rot_type != "rot47") or (
-                data.status != "encrypted" and data.status != "decrypted"
-        ):
-            return True
-        return False
+        new_list = []
+        val = data['data']
+        for v in val:
+            new_list.append(Text.from_dict(v))
+        return new_list
 
     @staticmethod
     def is_filename_valid(filename: str) -> bool:
