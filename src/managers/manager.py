@@ -17,6 +17,10 @@ class Manager:
         new_text: Text = Text(text=encrypted_text, rot_type="rot13", status="encrypted")
         self.memory.add_text(data=new_text)
 
-
+    def decrypt_rot13(self) -> None:
+        text: str = input("Podaj dane, które chcesz odszyfrować: ")
+        decrypted_text: str = self.rot13.decrypt(text=text)
+        new_text: Text = Text(text=decrypted_text, rot_type="rot13", status="decrypted")
+        self.memory.add_text(data=new_text)
 
 
