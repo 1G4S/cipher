@@ -36,3 +36,5 @@ class Manager:
         new_text: Text = Text(text=decrypted_text, rot_type="rot47", status="decrypted")
         self.memory.add_text(data=new_text)
 
+    def display_memory_buffer(self) -> None:
+        print(self.memory)
