@@ -70,3 +70,14 @@ class TestManager(unittest.TestCase):
         self.manager.read_from_file()
         self.assertEqual(self.manager.memory.buffer, test_list)
         self.manager.clear_memory()
+
+    @patch("builtins.input", return_value="neohm")
+    def test_clear_memory(self, mock_input):
+        self.manager.encrypt_rot13()
+        self.manager.clear_memory()
+        self.assertEqual(len(self.manager.memory.buffer), 0)
+
+    def test_exit_program(self):
+        with self.assertRaises(SystemExit) as cm:
+            Manager.exit_program()
+        self.assertIsNone(cm.exception.code)
