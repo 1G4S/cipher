@@ -5,7 +5,7 @@ class Menu:
     def display(self):
         print(35 * "*")
         for key, value in self.options.items():
-            print(f"{key}. {value}")
+            print(f"{key}. {value[0]}")
         print(35 * "*")
 
     def make_choice(self):
