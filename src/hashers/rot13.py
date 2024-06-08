@@ -13,12 +13,12 @@ class ROT13(Cipher):
 
     def encrypt(self, text: str) -> str:
         if not self.is_text_in_rot13_valid(text):
-            raise ValueError
+            raise ValueError("Input chars are numbers or polish chars.")
         return text.translate(self._enc_table)
 
     def decrypt(self, text: str) -> str:
         if not self.is_text_in_rot13_valid(text):
-            raise ValueError
+            raise ValueError("Input chars are numbers or polish chars.")
         return text.translate(self._dec_table)
 
     @staticmethod
