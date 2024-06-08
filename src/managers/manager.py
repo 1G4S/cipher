@@ -1,3 +1,5 @@
+import sys
+
 from src.files.file_handler import FileHandler
 from src.hashers.rot13 import ROT13
 from src.hashers.rot47 import ROT47
@@ -49,3 +51,10 @@ class Manager:
     def save_to_file(self) -> None:
         filename: str = input("Podaj nazwę pliku: ")
         FileHandler.save_text_to_file(data=self.memory.buffer, filename=filename)
+
+    def clear_memory(self) -> None:
+        self.memory.buffer = []
+
+    @staticmethod
+    def exit_program() -> None:
+        sys.exit()
