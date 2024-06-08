@@ -12,8 +12,8 @@ class TestManager(unittest.TestCase):
         self.manager = Manager()
 
     def tearDown(self):
-        if os.path.exists("/Users/igorsarnowski/PycharmProjects/cipher/tests/managers/test.json"):
-            os.remove("/Users/igorsarnowski/PycharmProjects/cipher/tests/managers/test.json")
+        if os.path.exists("/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json"):
+            os.remove("/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json")
 
     @patch("builtins.input", return_value="arbuz")
     def test_encrypt_rot13_in_manager(self, mock_input):
@@ -60,7 +60,7 @@ class TestManager(unittest.TestCase):
         self.manager.clear_memory()
 
     @patch('builtins.input',
-           side_effect=["test.json", "/Users/igorsarnowski/PycharmProjects/cipher/tests/managers/test.json"])
+           side_effect=["test.json", "/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json"])
     def test_save_to_file_in_manager(self, mock_input):
         text = Text("str", "rot13", "encrypted")
         test_list = [text]
