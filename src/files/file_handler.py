@@ -12,14 +12,14 @@ class FileHandler:
         if not FileHandler.is_filename_valid(filename=filename):
             raise ValueError("Filename is not correct. It must end with .json")
 
-        formatted_text_list = []
-        formatted_dict = {}
+        formatted_text_list: list = []
+        formatted_dict: dict = {}
         for d in data:
             if d.is_text_valid():
                 formatted_text_list.append(asdict(d))
             else:
                 raise ValueError
-        formatted_dict['data'] = formatted_text_list
+        formatted_dict["data"] = formatted_text_list
 
         with open(filename, "w") as file:
             json.dump(formatted_dict, file, indent=4)
@@ -28,8 +28,8 @@ class FileHandler:
     def read_from_file(path: str) -> list[Text]:
         with open(path) as file:
             data: dict = json.load(file)
-        new_list = []
-        val = data['data']
+        new_list: list = []
+        val: list = data["data"]
         for v in val:
             new_list.append(Text.from_dict(v))
         return new_list
