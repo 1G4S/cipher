@@ -9,14 +9,11 @@ class Menu:
         print(35 * "*")
 
     def make_choice(self):
-        try:
-            choice = int(input("Podaj swój wybór: "))
-            if self.validation(choice, self.options):
-                raise ValueError("Wybór poza zakresem")
-            return choice
-        except ValueError as e:
-            print(f"Błąd: {e}")
+        choice = int(input("Podaj swój wybór: "))
+        if not self.is_choice_valid(choice, self.options):
+            raise ValueError("Wybór poza zakresem")
+        return choice
 
     @staticmethod
-    def validation(choice: int, options: dict) -> bool:
-        return not (1 <= choice <= len(options))
+    def is_choice_valid(choice: int, options: dict) -> bool:
+        return 1 <= choice <= len(options)

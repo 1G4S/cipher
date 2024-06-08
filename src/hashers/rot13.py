@@ -12,16 +12,14 @@ class ROT13(Cipher):
     )
 
     def encrypt(self, text: str) -> str:
-        if self.is_text_in_rot13_valid(text):
-            return text.translate(self._enc_table)
-        else:
+        if not self.is_text_in_rot13_valid(text):
             raise ValueError
+        return text.translate(self._enc_table)
 
     def decrypt(self, text: str) -> str:
-        if self.is_text_in_rot13_valid(text):
-            return text.translate(self._dec_table)
-        else:
+        if not self.is_text_in_rot13_valid(text):
             raise ValueError
+        return text.translate(self._dec_table)
 
     @staticmethod
     def is_text_in_rot13_valid(text: str) -> bool:

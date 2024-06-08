@@ -24,7 +24,6 @@ class Text:
 
     @staticmethod
     def from_dict(data: dict) -> "Text":
-        if Text.is_text_from_dict_valid(data=data):
-            return Text(**data)
-        else:
+        if not Text.is_text_from_dict_valid(data=data):
             raise ValueError
+        return Text(**data)

@@ -52,7 +52,7 @@ class TestMenu(unittest.TestCase):
             self.menu.make_choice()
 
     def test_validation_in_menu_right_value(self):
-        self.assertEqual(self.menu.validation(4, self._options), False)
+        self.assertEqual(self.menu.is_choice_valid(4, self._options), True)
 
     def test_validation_in_menu_wrong_value(self):
-        self.assertEqual(self.menu.validation(-4, self._options), True)
+        self.assertEqual(self.menu.is_choice_valid(-4, self._options), False)

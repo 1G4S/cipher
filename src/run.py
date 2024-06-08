@@ -10,13 +10,13 @@ text = Text("str", "rot13", "encrypted")
 text2 = Text("str", "rot47", "encrypted")
 text3 = Text("st1234", "rot13", "encrypted")
 list1 = [text, text3, text2]
-# buf.add_text(text)
-# buf.add_text(text2)
-# buf.add_text(text3)
+buf.add_text(text)
+buf.add_text(text2)
+buf.add_text(text3)
 
-# print(buf.__str__())
-# buf.remove_text("st1234")
-# print(buf.__str__())
+print(buf.__str__())
+buf.remove_text("st1234")
+print(buf.__str__())
 
 # options = {1: "Szyfrowanie ROT13",
 #            2: "Deszyfrowanie ROT13",
@@ -35,7 +35,4 @@ list1 = [text, text3, text2]
 
 # FileHandler.save_text_to_file(list1, "tested.json")
 t1 = {"text": "str", "rot_type": "rot13", "status": "encrypted"}
-print(ROT13.is_text_in_rot13_valid("arbuz"))
-# print(Text.is_text_from_dict_valid(t1))
 
-# print(FileHandler.read_from_file("test_read.json"))

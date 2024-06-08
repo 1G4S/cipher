@@ -6,21 +6,18 @@ class MemoryBuffer:
         self.buffer: list[Text] = []
 
     def add_text(self, data: Text) -> None:
-        if self.validation(data=data):
+        if not self.is_data_valid(data=data):
             raise ValueError
 
         self.buffer.append(data)
 
     def remove_text(self, name: str) -> None:
-        for text in self.buffer.copy():
-            if name == text.text:
-                self.buffer.remove(text)
-        # return [text for text in self.buffer if name != text.text]
+        self.buffer = [text for text in self.buffer if name != text.text]
 
     @staticmethod
-    def validation(data: Text) -> bool:
-        if (data.rot_type != "rot13" and data.rot_type != "rot47") or (
-            data.status != "encrypted" and data.status != "decrypted"
+    def is_data_valid(data: Text) -> bool:
+        if (data.rot_type == "rot13" or data.rot_type == "rot47") and (
+                data.status == "encrypted" or data.status == "decrypted"
         ):
             return True
         return False
