@@ -16,6 +16,14 @@ class TestMemoryBuffer(unittest.TestCase):
         self.assertIn(text1, buffer.buffer)
         self.assertIn(text2, buffer.buffer)
 
+    def test_add_list_of_text(self):
+        buffer = MemoryBuffer()
+        text1 = Text("12345", "rot13", "encrypted")
+        text2 = Text("31254215", "rot47", "decrypted")
+        list1 = [text1, text2]
+        buffer.add_list_of_texts(list1)
+        self.assertEqual(len(buffer.buffer), 2)
+
     def test_remove_text(self):
         buffer = MemoryBuffer()
         text1 = Text("12345", "rot13", "encrypted")
