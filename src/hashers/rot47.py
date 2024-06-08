@@ -5,22 +5,22 @@ class ROT47(Cipher):
     _enc_dec_table: str = r"""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"""
 
     def encrypt(self, text: str) -> str:
-        if self.validation(text):
+        if self.is_text_in_rot47_valid(text):
+            return text.translate(str.maketrans(
+                self._enc_dec_table,
+                self._enc_dec_table[47:] + self._enc_dec_table[:47]))
+        else:
             raise ValueError
-
-        return text.translate(str.maketrans(
-            self._enc_dec_table,
-            self._enc_dec_table[47:] + self._enc_dec_table[:47]))
 
     def decrypt(self, text: str) -> str:
-        if self.validation(text):
+        if self.is_text_in_rot47_valid(text):
+            return text.translate(str.maketrans(
+                self._enc_dec_table[47:] + self._enc_dec_table[:47],
+                self._enc_dec_table))
+        else:
             raise ValueError
 
-        return text.translate(str.maketrans(
-            self._enc_dec_table[47:] + self._enc_dec_table[:47],
-            self._enc_dec_table))
-
     @staticmethod
-    def validation(text: str) -> bool:
+    def is_text_in_rot47_valid(text: str) -> bool:
         wrong_chars: str = "ĄąĆćĘęŁłŃńÓóŚśŹźŻż"
-        return any(i in text for i in wrong_chars)
+        return all(i not in text for i in wrong_chars)

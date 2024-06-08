@@ -36,8 +36,8 @@ class TestRot13(unittest.TestCase):
 
     def test_validation_in_rot_13_for_wrong_value(self):
         text_to_validate = "1ąr3buz2"
-        self.assertEqual(ROT13.validation(text=text_to_validate), True)
+        self.assertEqual(ROT13.is_text_in_rot13_valid(text=text_to_validate), False)
 
     def test_validation_in_rot_13_for_right_value(self):
         text_to_validate = "arbuz"
-        self.assertEqual(ROT13.validation(text=text_to_validate), False)
+        self.assertEqual(ROT13.is_text_in_rot13_valid(text=text_to_validate), True)

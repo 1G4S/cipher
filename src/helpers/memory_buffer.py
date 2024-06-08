@@ -8,7 +8,7 @@ class MemoryBuffer:
     def add_text(self, data: Text) -> None:
         if self.validation(data=data):
             raise ValueError
-        
+
         self.buffer.append(data)
 
     def remove_text(self, name: str) -> None:
@@ -20,7 +20,7 @@ class MemoryBuffer:
     @staticmethod
     def validation(data: Text) -> bool:
         if (data.rot_type != "rot13" and data.rot_type != "rot47") or (
-                data.status != "encrypted" and data.status != "decrypted"
+            data.status != "encrypted" and data.status != "decrypted"
         ):
             return True
         return False

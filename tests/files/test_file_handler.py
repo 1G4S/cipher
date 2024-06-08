@@ -7,10 +7,16 @@ from src.helpers.text import Text
 class TestFileHandler(unittest.TestCase):
     def setUp(self):
         self.test_file = "test_output.json"
-        self.test_data = [Text("str", "rot13", "encrypted"), Text('str', 'rot47', 'encrypted'),
-                          Text('st1234', 'rot13', 'encrypted')]
-        self.test_data_to_read_from_file = [Text("str", "rot13", "encrypted"), Text('str12', 'rot13', 'decrypted'),
-                                            Text('str32', 'rot47', 'encrypted')]
+        self.test_data = [
+            Text("str", "rot13", "encrypted"),
+            Text("str", "rot47", "encrypted"),
+            Text("st1234", "rot13", "encrypted"),
+        ]
+        self.test_data_to_read_from_file = [
+            Text("str", "rot13", "encrypted"),
+            Text("str12", "rot13", "decrypted"),
+            Text("str32", "rot47", "encrypted"),
+        ]
 
     def tearDown(self):
         if os.path.exists(self.test_file):
