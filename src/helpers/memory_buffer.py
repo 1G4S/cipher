@@ -11,6 +11,12 @@ class MemoryBuffer:
 
         self.buffer.append(data)
 
+    def add_list_of_texts(self, data: list[Text]):
+        for d in data:
+            if not self.is_data_valid(data=d):
+                raise ValueError
+            self.buffer.append(d)
+
     def remove_text(self, name: str) -> None:
         self.buffer = [text for text in self.buffer if name != text.text]
 
