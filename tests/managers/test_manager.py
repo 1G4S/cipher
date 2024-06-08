@@ -30,3 +30,9 @@ class TestManager(unittest.TestCase):
         self.assertEqual(self.manager.memory.buffer[0], text)
         self.manager.clear_memory()
 
+    @patch("builtins.input", return_value="AC@;64E 6CC@CD")
+    def test_decrypt_rot47_in_manager(self, mock_input):
+        text = Text("project errors", "rot47", "decrypted")
+        self.manager.decrypt_rot47()
+        self.assertEqual(self.manager.memory.buffer[0], text)
+        self.manager.clear_memory()
