@@ -1,8 +1,11 @@
+from typing import Callable
+
+
 class Menu:
-    def __init__(self, options: dict) -> None:
+    def __init__(self, options: dict[int, tuple[str, Callable]]) -> None:
         self.options: dict = options
 
-    def display(self):
+    def display(self) -> None:
         print(35 * "*")
         for key, value in self.options.items():
             print(f"{key}. {value[0]}")
@@ -17,3 +20,6 @@ class Menu:
     @staticmethod
     def is_choice_valid(choice: int, options: dict) -> bool:
         return 1 <= choice <= len(options)
+
+    def update_options(self, options: dict[int, tuple[str, Callable]]) -> None:
+        self.options = options
