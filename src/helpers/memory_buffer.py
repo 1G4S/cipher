@@ -24,7 +24,7 @@ class MemoryBuffer:
 
     @staticmethod
     def is_choice_valid(choice: int, buffer: list) -> bool:
-        return 1 <= choice <= len(buffer) - 1
+        return 1 <= choice <= len(buffer)
 
     @staticmethod
     def is_data_valid(data: Text) -> bool:
