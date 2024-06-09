@@ -17,8 +17,14 @@ class MemoryBuffer:
                 raise ValueError("Data are not correct.")
             self.buffer.append(d)
 
-    def remove_text(self, name: str) -> None:
-        self.buffer = [text for text in self.buffer if name != text.text]
+    def remove_text(self, index: int) -> None:
+        if not MemoryBuffer.is_choice_valid(index, self.buffer):
+            raise ValueError("Choice is out of range.")
+        del self.buffer[index - 1]
+
+    @staticmethod
+    def is_choice_valid(choice: int, buffer: list) -> bool:
+        return 1 <= choice <= len(buffer) - 1
 
     @staticmethod
     def is_data_valid(data: Text) -> bool:
