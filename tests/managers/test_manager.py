@@ -1,15 +1,24 @@
 import os
 import unittest
 
+from src.hashers.rot13 import ROT13
+from src.hashers.rot47 import ROT47
+from src.helpers.memory_buffer import MemoryBuffer
 from src.helpers.text import Text
 from src.managers.manager import Manager
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from io import StringIO
+
+from src.menus.menu import Menu
 
 
 class TestManager(unittest.TestCase):
     def setUp(self):
-        self.manager = Manager()
+        self.memory_buffer = MemoryBuffer()
+        self.rot13 = ROT13()
+        self.rot47 = ROT47()
+        self.menu = Menu({})
+        self.manager = Manager(self.memory_buffer, self.rot13, self.rot47, self.menu)
 
     def tearDown(self):
         if os.path.exists("/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json"):
@@ -45,13 +54,14 @@ class TestManager(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_display_memory_buffer_in_manager(self, mock_out):
-        text = Text(text="example", rot_type="rot47", status="decrypted")
+        t = "1. Text: arbuz, Type: rot13, Status: encrypted"
+        text = Text(text="arbuz", rot_type="rot13", status="encrypted")
         self.manager.memory.add_text(text)
         self.manager.display_memory_buffer()
-        self.assertIn("Text(text='example', rot_type='rot47', status='decrypted')", mock_out.getvalue())
+        self.assertIn(t, mock_out.getvalue())
         self.manager.clear_memory()
 
-    @patch('builtins.input', return_value="/Users/igorsarnowski/PycharmProjects/cipher/tests/test_read_manager.json")
+    @patch('builtins.input', return_value="/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json")
     def test_read_from_file_in_manager(self, mock_input):
         text = Text("str", "rot13", "encrypted")
         test_list = [text]
