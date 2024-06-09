@@ -25,5 +25,4 @@ class Text:
         return Text(**data)
 
     def __str__(self):
-        return f'Text: {self.text}, Type: {self.rot_type}, Status: {self.status}'
-
+        return f"Text: {self.text}, Type: {self.rot_type}, Status: {self.status}"
