@@ -12,6 +12,7 @@ class Manager:
         self.rot13 = rot13
         self.rot47 = rot47
         self.menu = menu
+        self.setup_options()
 
     def setup_options(self):
         options: dict[int, tuple[str, Callable]] = {
@@ -28,7 +29,6 @@ class Manager:
         self.menu.update_options(options)
 
     def main_loop(self):
-        self.setup_options()
         program_is_on = True
         while program_is_on:
             self.menu.display()
@@ -65,7 +65,7 @@ class Manager:
         self.memory.add_text(data=new_text)
 
     def display_memory_buffer(self) -> None:
-        print(self.memory.buffer)
+        self.memory.display_memory()
 
     def read_from_file(self) -> None:
         path: str = input("Podaj ścieżkę do pliku: ")
