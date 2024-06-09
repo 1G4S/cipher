@@ -23,7 +23,7 @@ class Manager:
             5: ("Wyświetlenie zapisanych danych", self.display_memory_buffer),
             6: ("Odczyt z pliku", self.read_from_file),
             7: ("Zapis do pliku", self.save_to_file),
-            8: ("Usuń dane", self.clear_memory),
+            8: ("Usuń dane", self.remove_element),
             9: ("Wyjście", self.exit_program),
         }
         self.menu.update_options(options)
@@ -39,27 +39,27 @@ class Manager:
                 print(e)
 
     def encrypt_rot13(self) -> None:
-        text: str = input("Podaj dane, które chcesz zaszyfrować: ")
+        text: str = Manager.get_input("Podaj dane, które chcesz zaszyfrować: ")
         encrypted_text: str = self.rot13.encrypt(text=text)
 
         new_text: Text = Text(text=encrypted_text, rot_type="rot13", status="encrypted")
         self.memory.add_text(data=new_text)
 
     def decrypt_rot13(self) -> None:
-        text: str = input("Podaj dane, które chcesz odszyfrować: ")
+        text: str = Manager.get_input("Podaj dane, które chcesz odszyfrować: ")
         decrypted_text: str = self.rot13.decrypt(text=text)
         new_text: Text = Text(text=decrypted_text, rot_type="rot13", status="decrypted")
         self.memory.add_text(data=new_text)
 
     def encrypt_rot47(self) -> None:
-        text: str = input("Podaj dane, które chcesz zaszyfrować: ")
+        text: str = Manager.get_input("Podaj dane, które chcesz zaszyfrować: ")
         encrypted_text: str = self.rot47.encrypt(text=text)
 
         new_text: Text = Text(text=encrypted_text, rot_type="rot47", status="encrypted")
         self.memory.add_text(data=new_text)
 
     def decrypt_rot47(self) -> None:
-        text: str = input("Podaj dane, które chcesz odszyfrować: ")
+        text: str = Manager.get_input("Podaj dane, które chcesz odszyfrować: ")
         decrypted_text: str = self.rot47.decrypt(text=text)
         new_text: Text = Text(text=decrypted_text, rot_type="rot47", status="decrypted")
         self.memory.add_text(data=new_text)
@@ -68,16 +68,21 @@ class Manager:
         self.memory.display_memory()
 
     def read_from_file(self) -> None:
-        path: str = input("Podaj ścieżkę do pliku: ")
+        path: str = Manager.get_input("Podaj ścieżkę do pliku: ")
         data_read = FileHandler.read_from_file(path=path)
         self.memory.add_list_of_texts(data=data_read)
 
     def save_to_file(self) -> None:
-        filename: str = input("Podaj nazwę pliku: ")
+        filename: str = Manager.get_input("Podaj nazwę pliku: ")
         FileHandler.save_text_to_file(data=self.memory.buffer, filename=filename)
 
-    def clear_memory(self) -> None:
-        self.memory.buffer = []
+    def remove_element(self) -> None:
+        choice: int = int(Manager.get_input("Podaj numer obiektu, który chcesz usunąć: "))
+        self.memory.remove_text(index=choice)
+
+    @staticmethod
+    def get_input(text: str):
+        return input(text)
 
     @staticmethod
     def exit_program() -> None:
