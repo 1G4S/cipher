@@ -34,7 +34,7 @@ class TestMemoryBuffer(unittest.TestCase):
         buffer.add_text(text1)
         buffer.add_text(text2)
 
-        buffer.remove_text("12345")
+        buffer.remove_text(1)
 
         self.assertEqual(len(buffer.buffer), 1)
         self.assertNotIn(text1, buffer.buffer)
@@ -48,6 +48,26 @@ class TestMemoryBuffer(unittest.TestCase):
         buffer.add_text(text)
         buffer.display_memory()
         self.assertIn(t, mock_out.getvalue())
+
+    def test_validation_in_menu_right_value(self):
+        buffer = MemoryBuffer()
+        text1 = Text("12345", "rot13", "encrypted")
+        text2 = Text("31254215", "rot47", "decrypted")
+        text3 = Text("3125443534515", "rot47", "decrypted")
+        buffer.add_text(text1)
+        buffer.add_text(text2)
+        buffer.add_text(text3)
+        self.assertEqual(MemoryBuffer.is_choice_valid(1, buffer.buffer), True)
+
+    def test_validation_in_menu_wrong_value(self):
+        buffer = MemoryBuffer()
+        text1 = Text("12345", "rot13", "encrypted")
+        text2 = Text("31254215", "rot47", "decrypted")
+        text3 = Text("3125443534515", "rot47", "decrypted")
+        buffer.add_text(text1)
+        buffer.add_text(text2)
+        buffer.add_text(text3)
+        self.assertEqual(MemoryBuffer.is_choice_valid(4, buffer.buffer), False)
 
     def test_validation_in_memory_buffer_for_right_value(self):
         data_to_validate = Text("str", "rot13", "encrypted")
