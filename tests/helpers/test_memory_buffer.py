@@ -1,4 +1,7 @@
 import unittest
+from io import StringIO
+from unittest.mock import patch
+
 from src.helpers.text import Text
 from src.helpers.memory_buffer import MemoryBuffer
 
@@ -36,6 +39,15 @@ class TestMemoryBuffer(unittest.TestCase):
         self.assertEqual(len(buffer.buffer), 1)
         self.assertNotIn(text1, buffer.buffer)
         self.assertIn(text2, buffer.buffer)
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_display_memory_buffer_in_manager(self, mock_out):
+        buffer = MemoryBuffer()
+        t = "1. Text: arbuz, Type: rot13, Status: encrypted"
+        text = Text(text="arbuz", rot_type="rot13", status="encrypted")
+        buffer.add_text(text)
+        buffer.display_memory()
+        self.assertIn(t, mock_out.getvalue())
 
     def test_validation_in_memory_buffer_for_right_value(self):
         data_to_validate = Text("str", "rot13", "encrypted")
