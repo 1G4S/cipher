@@ -28,5 +28,6 @@ class MemoryBuffer:
             return True
         return False
 
-    def __str__(self):
-        return self.buffer
+    def display_memory(self) -> None:
+        for count, item in enumerate(self.buffer, 1):
+            print(f'{count}. {item}')
