@@ -3,8 +3,6 @@
 Welcome to the ROT13 and ROT47 Encoder/Decoder project! This Python-based project provides utilities to encode and
 decode text using ROT13 and ROT47 ciphers.
 
-![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
-
 # Table of Contents
 
 * [General info](#general-info)
