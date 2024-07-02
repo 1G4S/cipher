@@ -32,6 +32,34 @@ Moreover, this app provides displaying data, reading from file, saving to file a
 * CI/CD
 
 ## Setup
+**Clone the repository**:
 ```commandline
-git clone
+git clone https://github.com/1G4S/cipher
 ```
+
+**Create and activate a virtual environment**:
+
+For Windows:
+
+```commandline
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+For macOS/Linux:
+
+```commandline
+python3 -m venv venv
+source venv/bin/activate
+```
+
+[//]: # (**Run the project**:)
+
+[//]: # ()
+[//]: # (For example, if you have a `run.py` file, run it with:)
+
+[//]: # (```commandline)
+
+[//]: # (python src/run.py)
+
+[//]: # (```)
