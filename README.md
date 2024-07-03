@@ -64,5 +64,4 @@ source venv/bin/activate
 [//]: # (```)
 
 ## Application view
-
-![Zrzut ekranu 2024-07-3 o 17.35.47.png](..%2F..%2FDesktop%2FZrzut%20ekranu%202024-07-3%20o%2017.35.47.png)
+![app.png](app.png)
