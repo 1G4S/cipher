@@ -8,7 +8,6 @@ decode text using ROT13 and ROT47 ciphers.
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [More detailed information about modules](#more-detailed-information-about-modules)
 * [Application view](#application-view)
 
 ## General info
@@ -66,4 +65,4 @@ source venv/bin/activate
 
 ## Application view
 
-<img src="https://github.com/1G4S/cipher/assets/121892339/05acedf7-db5b-4489-b10c-0694b69e128c" width="50%" height"50%"></img>
+![Zrzut ekranu 2024-07-3 o 17.35.47.png](..%2F..%2FDesktop%2FZrzut%20ekranu%202024-07-3%20o%2017.35.47.png)
