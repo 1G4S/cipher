@@ -52,16 +52,11 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-[//]: # (**Run the project**:)
+**Run the project**:
 
-[//]: # ()
-[//]: # (For example, if you have a `run.py` file, run it with:)
-
-[//]: # (```commandline)
-
-[//]: # (python src/run.py)
-
-[//]: # (```)
+```commandline
+python src/run.py
+```
 
 ## Application view
 ![app.png](app.png)
