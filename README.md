@@ -63,3 +63,7 @@ source venv/bin/activate
 [//]: # (python src/run.py)
 
 [//]: # (```)
+
+## Application view
+
+<img src="https://github.com/1G4S/cipher/assets/121892339/05acedf7-db5b-4489-b10c-0694b69e128c" width="50%" height"50%"></img>
