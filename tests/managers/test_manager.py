@@ -21,7 +21,9 @@ class TestManager(unittest.TestCase):
         self.manager = Manager(self.memory_buffer, self.rot13, self.rot47, self.menu)
 
     def tearDown(self):
-        if os.path.exists("/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json"):
+        if os.path.exists(
+            "/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json"
+        ):
             os.remove("/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json")
 
     @patch("builtins.input", return_value="arbuz")
@@ -52,7 +54,7 @@ class TestManager(unittest.TestCase):
         self.assertEqual(self.manager.memory.buffer[0], text)
         self.manager.memory.buffer = []
 
-    @patch('sys.stdout', new_callable=StringIO)
+    @patch("sys.stdout", new_callable=StringIO)
     def test_display_memory_buffer_in_manager(self, mock_out):
         t = "1. Text: arbuz, Type: rot13, Status: encrypted"
         text = Text(text="arbuz", rot_type="rot13", status="encrypted")
@@ -61,7 +63,10 @@ class TestManager(unittest.TestCase):
         self.assertIn(t, mock_out.getvalue())
         self.manager.memory.buffer = []
 
-    @patch('builtins.input', return_value="/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json")
+    @patch(
+        "builtins.input",
+        return_value="/Users/igorsarnowski/PycharmProjects/cipher/tests/test_read_manager.json",
+    )
     def test_read_from_file_in_manager(self, mock_input):
         text = Text("str", "rot13", "encrypted")
         test_list = [text]
@@ -69,8 +74,13 @@ class TestManager(unittest.TestCase):
         self.assertEqual(self.manager.memory.buffer, test_list)
         self.manager.memory.buffer = []
 
-    @patch('builtins.input',
-           side_effect=["test.json", "/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json"])
+    @patch(
+        "builtins.input",
+        side_effect=[
+            "test.json",
+            "/Users/igorsarnowski/PycharmProjects/cipher/tests/test.json",
+        ],
+    )
     def test_save_to_file_in_manager(self, mock_input):
         text = Text("str", "rot13", "encrypted")
         test_list = [text]

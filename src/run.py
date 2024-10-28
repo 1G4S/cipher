@@ -1,8 +1,8 @@
-from src.hashers.rot13 import ROT13
-from src.hashers.rot47 import ROT47
-from src.helpers.memory_buffer import MemoryBuffer
-from src.managers.manager import Manager
-from src.menus.menu import Menu
+from hashers.rot13 import ROT13
+from hashers.rot47 import ROT47
+from helpers.memory_buffer import MemoryBuffer
+from managers.manager import Manager
+from menus.menu import Menu
 
 memory_buffer = MemoryBuffer()
 rot13 = ROT13()
